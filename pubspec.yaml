@@ -1,14 +1,20 @@
 name: mobile_p3l
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  dio: ^5.4.2+1
+  toastification: ^1.2.1
+  responsive_sizer: ^3.3.1
+  shared_preferences: ^2.2.2
+  persistent_bottom_nav_bar: ^5.0.2
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +23,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Light.ttf
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Medium.ttf
+        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: fonts/Poppins-Bold.ttf
