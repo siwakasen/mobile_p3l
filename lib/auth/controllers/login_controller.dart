@@ -14,12 +14,23 @@ class LoginController {
       );
 
       if (res.data['data']['role'] == 'Manajer Operasional') {
+        setPreference('id', res.data['data']['id_karyawan'].toString());
+        setPreference('nama', res.data['data']['nama_karyawan']);
+        setPreference('email', res.data['data']['email']);
         setPreference('role', res.data['data']['role']);
+        setPreference('token', res.data['token']);
         return res;
       }
-
-      if (res.data['data']['role'] == null) {
-        setPreference('role', 'User');
+      if (res.data['data']['role'] == 'User') {
+        setPreference('id', res.data['data']['id']);
+        setPreference('nama', res.data['data']['name']);
+        setPreference('email', res.data['data']['email']);
+        setPreference('tanggal_lahir', res.data['data']['tanggal_lahir']);
+        setPreference('no_hp', res.data['data']['no_hp']);
+        setPreference('saldo', res.data['data']['saldo']);
+        setPreference('poin', res.data['data']['poin']);
+        setPreference('role', res.data['data']['role']);
+        setPreference('token', res.data['token']);
         return res;
       }
 

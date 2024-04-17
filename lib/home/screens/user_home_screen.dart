@@ -11,12 +11,16 @@ class UserHomeScreen extends StatefulWidget {
 class _UserHomeScreenState extends State<UserHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100.w,
-      height: 100.h,
-      color: Colors.green,
-      child: const Center(
-        child: Text('User Home Screen'),
+    return Scaffold(
+      body: Container(
+        width: 100.w,
+        height: 100.h,
+        color: Colors.green,
+        child: Center(
+          child: ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed("/home/mo"),
+              child: const Text("Test push to Mo")),
+        ),
       ),
     );
   }
