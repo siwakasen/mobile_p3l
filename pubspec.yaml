@@ -13,7 +13,7 @@ dependencies:
   toastification: ^1.2.1
   responsive_sizer: ^3.3.1
   shared_preferences: ^2.2.2
-  persistent_bottom_nav_bar: ^5.0.2
+  salomon_bottom_bar: ^3.3.2
   page_transition: ^2.1.0
 
 dev_dependencies:

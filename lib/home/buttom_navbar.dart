@@ -2,25 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:mobile_p3l/constants.dart';
 import 'package:mobile_p3l/home/screens/mo_home_screen.dart';
 import 'package:mobile_p3l/home/screens/user_home_screen.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-class ButtomNavigation extends StatefulWidget {
+class Dashboard extends StatefulWidget {
   final int? index;
-  const ButtomNavigation({super.key, this.index});
+
+  const Dashboard({super.key, this.index});
 
   @override
-  State<ButtomNavigation> createState() => ButtomNavigationState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class ButtomNavigationState extends State<ButtomNavigation> {
-  PersistentTabController? _controller;
+class _DashboardState extends State<Dashboard> {
+  final controller = ScrollController();
+  int currentIndex = 0;
   String? role;
+  PageController? _pageController;
 
   @override
   void initState() {
-    super.initState();
+    currentIndex = widget.index ?? 0;
+    _pageController = PageController(
+      initialPage: widget.index ?? 0,
+    );
     getRole();
-    _controller = PersistentTabController(initialIndex: widget.index ?? 0);
+    super.initState();
   }
 
   void getRole() async {
@@ -30,75 +37,76 @@ class ButtomNavigationState extends State<ButtomNavigation> {
     });
   }
 
-  List<Widget> userScreen() {
-    return const [
-      UserHomeScreen(),
-      UserHomeScreen(),
-      UserHomeScreen(),
+  List<Widget> userScreen = [
+    const UserHomeScreen(),
+    const MOHomeScreen(),
+    const UserHomeScreen(),
+  ];
+
+  List<Widget> moScreen = [
+    const MOHomeScreen(),
+    const UserHomeScreen(),
+  ];
+
+  List<SalomonBottomBarItem> userNavBarsItems() {
+    return [
+      SalomonBottomBarItem(
+        icon: const Icon(Icons.dashboard),
+        title: const Text("Home"),
+      ),
+      SalomonBottomBarItem(
+        icon: const Icon(Icons.explore_outlined),
+        title: const Text("Explore"),
+      ),
+      SalomonBottomBarItem(
+        icon: const Icon(Icons.person_outline_outlined),
+        title: const Text("Profile"),
+      ),
     ];
   }
 
-  List<Widget> moScreen() {
-    return const [
-      MOHomeScreen(),
-      MOHomeScreen(),
+  List<SalomonBottomBarItem> moNavBarsItems() {
+    return [
+      SalomonBottomBarItem(
+        icon: const Icon(Icons.dashboard),
+        title: const Text("Home"),
+      ),
+      SalomonBottomBarItem(
+        icon: const Icon(Icons.person_outline_outlined),
+        title: const Text("Profile"),
+      ),
     ];
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      currentIndex = index;
+      _pageController?.animateToPage(index,
+          duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      screens: role == 'User' ? userScreen() : moScreen(),
-      items: role == 'User' ? userNavBarsItems() : moNavBarsItems(),
-      navBarStyle: NavBarStyle.style9,
-      controller: _controller,
-      confineInSafeArea: true,
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      stateManagement: false,
-      hideNavigationBarWhenKeyboardShows: true,
-      popAllScreensOnTapOfSelectedTab: true,
+    return Scaffold(
+      backgroundColor: slate[50],
+      body: SizedBox.expand(
+        child: PageView(
+          controller: _pageController,
+          children: role == 'User' ? userScreen : moScreen,
+        ),
+      ),
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: currentIndex,
+        selectedItemColor: indigo[500]!,
+        unselectedItemColor: slate[400]!,
+        onTap: _onItemTapped,
+        items: role == 'User' ? userNavBarsItems() : moNavBarsItems(),
+        margin: EdgeInsets.symmetric(vertical: 14.sp, horizontal: 20.sp),
+        itemShape:
+            BeveledRectangleBorder(borderRadius: BorderRadius.circular(10.sp)),
+        itemPadding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 12.sp),
+      ),
     );
-  }
-
-  List<PersistentBottomNavBarItem> userNavBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.dashboard),
-        title: ("Home"),
-        activeColorPrimary: indigo[500]!,
-        inactiveColorPrimary: slate[400]!,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.explore_outlined),
-        title: ("Explore"),
-        activeColorPrimary: indigo[500]!,
-        inactiveColorPrimary: slate[400]!,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.person_outline_outlined),
-        title: ("Profile"),
-        activeColorPrimary: indigo[500]!,
-        inactiveColorPrimary: slate[400]!,
-      ),
-    ];
-  }
-
-  List<PersistentBottomNavBarItem> moNavBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.dashboard),
-        title: ("Home"),
-        activeColorPrimary: indigo[500]!,
-        inactiveColorPrimary: slate[400]!,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.person_outline_outlined),
-        title: ("Profile"),
-        activeColorPrimary: indigo[500]!,
-        inactiveColorPrimary: slate[400]!,
-      ),
-    ];
   }
 }
