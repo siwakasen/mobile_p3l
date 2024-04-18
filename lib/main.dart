@@ -16,8 +16,14 @@ class MainApp extends StatelessWidget {
     return ResponsiveSizer(
       builder: (contex, orientation, screenType) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRoute.generateRoute,
           initialRoute: AppRoute.login,
+          theme: ThemeData(
+            colorScheme: const ColorScheme.light(
+              background:Colors.white
+            )
+          ),
         );
       },
     );
