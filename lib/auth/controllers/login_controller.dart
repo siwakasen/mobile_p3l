@@ -12,7 +12,6 @@ class LoginController {
           'password': password,
         },
       );
-
       if (res.data['data']['role'] == 'Manajer Operasional') {
         setPreference('id', res.data['data']['id_karyawan'].toString());
         setPreference('nama', res.data['data']['nama_karyawan']);
@@ -22,20 +21,17 @@ class LoginController {
         return res;
       }
       if (res.data['data']['role'] == 'User') {
-        setPreference('id', res.data['data']['id']);
+        setPreference('id', res.data['data']['id'].toString());
         setPreference('nama', res.data['data']['name']);
         setPreference('email', res.data['data']['email']);
         setPreference('tanggal_lahir', res.data['data']['tanggal_lahir']);
         setPreference('no_hp', res.data['data']['no_hp']);
-        setPreference('saldo', res.data['data']['saldo']);
-        setPreference('poin', res.data['data']['poin']);
+        setPreference('saldo', res.data['data']['saldo'].toString());
+        setPreference('poin', res.data['data']['poin'].toString());
         setPreference('role', res.data['data']['role']);
         setPreference('token', res.data['token']);
         return res;
       }
-
-      res.statusCode = 401;
-      res.data['message'] = 'Anda tidak memiliki akses';
       return res;
     } on DioException catch (e) {
       return e.response!;
