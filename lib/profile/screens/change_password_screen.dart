@@ -8,7 +8,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:toastification/toastification.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
-  const ChangePasswordScreen({super.key});
+  final String? email;
+  const ChangePasswordScreen(
+      {super.key, this.email}); //email dari lupa password
 
   @override
   State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
@@ -18,7 +20,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   bool isSubmitting = false;
   bool passwordVisible = false;
   bool confirmPasswordVisible = false;
-  String? email;
+  String? userLoginEmail;
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -30,10 +32,17 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   }
 
   void getEmail() async {
-    String? getEmail = await loadPreference('email');
-    setState(() {
-      email = getEmail!;
-    });
+    if (widget.email != '') {
+      //jika email dari lupa password ada maka email diambil dari parameter
+      setState(() {
+        userLoginEmail = widget.email;
+      });
+    } else {
+      String? getEmail = await loadPreference('email');
+      setState(() {
+        userLoginEmail = getEmail;
+      });
+    }
   }
 
   @override
@@ -106,6 +115,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Password can't be empty!";
+                              } else if (value.length < 8) {
+                                return "Password must be at least 8 characters!";
                               }
                               return null;
                             },
@@ -166,6 +177,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Password can't be empty!";
+                              } else if (value.length < 8) {
+                                return "Password must be at least 8 characters!";
                               } else if (value != password.text) {
                                 return "Password doesn't match!";
                               }
@@ -238,7 +251,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 });
                                 final res = await ChangePasswordController()
                                     .changePassword(password.text,
-                                        confirmPassword.text, email!);
+                                        confirmPassword.text, userLoginEmail!);
                                 await Future.delayed(
                                     const Duration(milliseconds: 500));
                                 if (res.statusCode == 200) {
@@ -246,12 +259,16 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                       ToastificationType.success);
                                   await Future.delayed(
                                       const Duration(milliseconds: 1000));
-                                  Navigator.pop(context);
+                                  if (widget.email != '') {
+                                    Navigator.of(context)
+                                        .pushNamed('/auth/signin');
+                                  } else {
+                                    Navigator.pop(context);
+                                  }
                                 } else {
                                   toast(context, res.data['message'] as String,
                                       ToastificationType.error);
                                 }
-
                                 setState(() {
                                   isSubmitting = false;
                                 });

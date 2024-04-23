@@ -220,7 +220,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         final res = await ChangePasswordController()
                             .sendRequest(email!);
                         if (res.statusCode == 200) {
-                          Navigator.of(context).pushNamed("/change-password");
+                          Navigator.of(context)
+                              .pushNamed("/change-password", arguments: '');
                           toast(context, res.data['message'],
                               ToastificationType.success);
                         } else {
