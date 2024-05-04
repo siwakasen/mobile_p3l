@@ -75,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Form(
                   key: _formKey,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 12.sp),
@@ -155,6 +156,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
+                      Container(
+                          margin: EdgeInsets.only(
+                              top: 12.sp, bottom: 12.sp, left: 10.sp),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed('/forget-password');
+                            },
+                            child: Text(
+                              'Lupa password?',
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14.sp,
+                                color: indigo[500],
+                              ),
+                            ),
+                          )),
                       Container(
                         margin: EdgeInsets.only(top: 20.sp),
                         child: AuthButtonWidget(
