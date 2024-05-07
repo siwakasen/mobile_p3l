@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_p3l/constants.dart';
 import 'package:mobile_p3l/home/screens/mo_home_screen.dart';
 import 'package:mobile_p3l/home/screens/user_home_screen.dart';
+import 'package:mobile_p3l/profile/screens/user_profile_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -40,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
   List<Widget> userScreen = [
     const UserHomeScreen(),
     const MOHomeScreen(),
-    const UserHomeScreen(),
+    const UserProfileScreen(),
   ];
 
   List<Widget> moScreen = [

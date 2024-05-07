@@ -12,7 +12,6 @@ class LoginController {
           'password': password,
         },
       );
-
       if (res.data['data']['role'] == 'Manajer Operasional') {
         setPreference('id', res.data['data']['id_karyawan'].toString());
         setPreference('nama', res.data['data']['nama_karyawan']);
@@ -33,9 +32,8 @@ class LoginController {
         setPreference('token', res.data['token']);
         return res;
       }
-
-      res.statusCode = 401;
-      res.data['message'] = 'Anda tidak memiliki akses';
+      res.statusCode = 400;
+      res.data['message'] = 'Unathorized access';
       return res;
     } on DioException catch (e) {
       return e.response!;
