@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_p3l/auth/screens/login_screen.dart';
-import 'package:mobile_p3l/constants.dart';
-import 'package:mobile_p3l/home/buttom_navbar.dart';
+import 'package:mobile_p3l/src/presentation/pages/auth/screens/login_screen.dart';
+import 'package:mobile_p3l/src/utils/constants.dart';
+import 'package:mobile_p3l/src/presentation/pages/home/buttom_navbar.dart';
 import 'package:mobile_p3l/routes/app_route.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
