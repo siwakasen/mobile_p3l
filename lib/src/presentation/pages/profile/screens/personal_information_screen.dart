@@ -373,7 +373,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
                           decoration: BoxDecoration(
                             color: indigo[400],
                             shape: BoxShape.rectangle,
@@ -412,7 +412,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                               '/auth/signin', (route) => false);
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
                           decoration: BoxDecoration(
                             color: red[400],
                             shape: BoxShape.rectangle,

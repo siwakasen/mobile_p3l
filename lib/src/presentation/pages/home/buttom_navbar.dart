@@ -40,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
 
   List<Widget> userScreen = [
     const UserHomeScreen(),
-    const MOHomeScreen(),
+    const UserHomeScreen(),
     const UserProfileScreen(),
   ];
 

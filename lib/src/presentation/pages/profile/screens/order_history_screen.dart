@@ -62,7 +62,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          "Order History",
+          "Histori Pesanan",
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.w500,
@@ -115,7 +115,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
               },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                hintText: "Search Order History",
+                hintText: "Cari produk yang ingin dicari",
                 hintStyle: TextStyle(
                   color: Colors.grey,
                   fontSize: 14.sp,
@@ -144,14 +144,17 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
               ),
             ),
             SizedBox(height: 2.h),
-            orderHistory.isEmpty ? Center(
-              child: Text(
-                "Tidak ada data",
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Poppins',
-                  color: Colors.black
+            orderHistory.isEmpty ? Container(
+              height: 50.h,
+              child: Center(
+                child: Text(
+                  "Tidak ada data",
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins',
+                    color: Colors.black
+                  ),
                 ),
               ),
             ) :
@@ -203,7 +206,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                       Text(
                                         convertDateTimeFormat(orderHistory[index].tanggal_pesanan),
                                         style: TextStyle(
-                                          fontSize: 12.sp,
+                                          fontSize: 13.sp,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Poppins',
                                           color: Colors.black
@@ -218,7 +221,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                 label: Text(
                                   orderHistory[index].status_transaksi == "Pesanan Sudah Selesai" ? "Selesai" : "Belum Selesai",
                                   style: TextStyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: 'Poppins',
                                     color: Colors.white
@@ -272,7 +275,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                             Text(
                                               "${e.jumlah} Produk",
                                               style: TextStyle(
-                                                fontSize: 12.sp,
+                                                fontSize: 13.sp,
                                                 fontWeight: FontWeight.w500,
                                                 fontFamily: 'Poppins',
                                                 color: Colors.grey
@@ -299,7 +302,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                   Text(
                                     "Total Bayar",
                                     style: TextStyle(
-                                      fontSize: 12.sp,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.w400,
                                       fontFamily: 'Poppins',
                                       color: Colors.black
@@ -308,7 +311,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                   Text(
                                     formatRupiah(orderHistory[index].total_bayar),
                                     style: TextStyle(
-                                      fontSize: 14.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Poppins',
                                       color: Colors.black
@@ -327,7 +330,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                 child: Text(
                                   'Beli Lagi',
                                   style: TextStyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: 'Poppins',
                                     color: Colors.white

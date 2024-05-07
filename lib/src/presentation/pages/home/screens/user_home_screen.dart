@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_p3l/src/utils/constants.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class UserHomeScreen extends StatefulWidget {
@@ -18,8 +19,12 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
         color: Colors.green,
         child: Center(
           child: ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed("/home/mo"),
-              child: const Text("Test push to Mo")),
+            onPressed: () {
+              logout();
+              Navigator.of(context).pushNamedAndRemoveUntil("/auth/login", (route) => false);
+            },
+            child: const Text("Logout")
+          )
         ),
       ),
     );
