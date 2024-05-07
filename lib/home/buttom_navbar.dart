@@ -94,6 +94,11 @@ class _DashboardState extends State<Dashboard> {
         child: PageView(
           controller: _pageController,
           children: role == 'User' ? userScreen : moScreen,
+          onPageChanged: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
         ),
       ),
       bottomNavigationBar: SalomonBottomBar(
