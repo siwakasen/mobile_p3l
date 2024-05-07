@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_p3l/auth/screens/login_screen.dart';
 import 'package:mobile_p3l/constants.dart';
+import 'package:mobile_p3l/home/buttom_navbar.dart';
 import 'package:mobile_p3l/routes/app_route.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -35,13 +37,12 @@ class _MainAppState extends State<MainApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRoute.generateRoute,
-          initialRoute: AppRoute.login,
           theme: ThemeData(
             colorScheme: const ColorScheme.light(
               background:Colors.white
-            )
+            ),
           ),
-          // home: token == null ? const LoginScreen() : const Dashboard(),
+          home: token == null ? const LoginScreen() : const Dashboard(),
         );
       },
     );

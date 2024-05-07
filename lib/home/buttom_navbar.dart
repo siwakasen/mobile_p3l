@@ -70,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
     return [
       SalomonBottomBarItem(
         icon: const Icon(Icons.dashboard),
-        title: const Text("Home"),
+        title: const Text("Presensi Karyawan"),
       ),
       SalomonBottomBarItem(
         icon: const Icon(Icons.person_outline_outlined),

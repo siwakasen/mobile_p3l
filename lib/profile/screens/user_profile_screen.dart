@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_p3l/constants.dart';
@@ -46,8 +48,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.grey[200],
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 5.h),
@@ -170,7 +171,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           color: Colors.black,
                           size: 18.sp,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushNamed("/personal-information", arguments: '');
+                        },
                       ),
                     ],
                   ),
@@ -315,7 +319,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           color: Colors.black,
                           size: 18.sp,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/order-history", arguments: '');
+                        },
                       ),
                     ],
                   ),
