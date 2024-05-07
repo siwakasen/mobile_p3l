@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_p3l/constants.dart';
+import 'package:mobile_p3l/src/presentation/pages/auth/screens/login_screen.dart';
+import 'package:mobile_p3l/src/utils/constants.dart';
+import 'package:mobile_p3l/src/presentation/pages/home/buttom_navbar.dart';
 import 'package:mobile_p3l/routes/app_route.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -33,9 +35,14 @@ class _MainAppState extends State<MainApp> {
     return ResponsiveSizer(
       builder: (contex, orientation, screenType) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRoute.generateRoute,
-          initialRoute: AppRoute.login,
-          // home: token == null ? const LoginScreen() : const Dashboard(),
+          theme: ThemeData(
+            colorScheme: const ColorScheme.light(
+              background:Colors.white
+            ),
+          ),
+          home: token == null ? const LoginScreen() : const Dashboard(),
         );
       },
     );
