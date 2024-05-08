@@ -250,10 +250,10 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                           decoration: BoxDecoration(
                                             shape: BoxShape.rectangle,
                                             borderRadius: BorderRadius.circular(10),
-                                            image: const DecorationImage(
+                                            image: DecorationImage(
                                               image: NetworkImage(
-                                                // e.produk != null ? e.produk!.foto_produk : e.hampers!.foto_hampers
-                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkjdQYqJp-qndaJRxEMg0LKKWiX67S83wBBcXFeb3CpQ&s"
+                                                e.produk != null ? API_URL+'storage/'+e.produk!.foto_produk : API_URL+'storage/'+e.hampers!.foto_hampers
+                                                // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkjdQYqJp-qndaJRxEMg0LKKWiX67S83wBBcXFeb3CpQ&s"
                                               ),
                                               fit: BoxFit.cover
                                             )
