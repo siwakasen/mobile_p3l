@@ -1,5 +1,5 @@
 import 'package:mobile_p3l/src/data/models/pesananModel.dart';
-import 'package:mobile_p3l/src/data/repositories/OrderHistoryRepository.dart';
+import 'package:mobile_p3l/src/data/repositories/orderHistoryRepository.dart';
 
 class OrderHistoryController {
   final OrderHistoryRepository _orderHistoryRepository = OrderHistoryRepository();
