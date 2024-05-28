@@ -4,6 +4,7 @@ import 'package:mobile_p3l/src/utils/constants.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/buttom_navbar.dart';
 import 'package:mobile_p3l/routes/app_route.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
 
 void main() {
   runApp(const MainApp());
@@ -38,11 +39,9 @@ class _MainAppState extends State<MainApp> {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRoute.generateRoute,
           theme: ThemeData(
-            colorScheme: const ColorScheme.light(
-              background:Colors.white
-            ),
+            colorScheme: const ColorScheme.light(background: Colors.white),
           ),
-          home: token == null ? const LoginScreen() : const Dashboard(),
+          home: token == null ? const HomeLanding() : const Dashboard(),
         );
       },
     );

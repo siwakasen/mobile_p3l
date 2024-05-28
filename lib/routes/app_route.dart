@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_p3l/src/presentation/pages/auth/screens/login_screen.dart';
+import 'package:mobile_p3l/src/presentation/pages/detail/detail_hampers.dart';
+import 'package:mobile_p3l/src/presentation/pages/detail/detail_produk.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/buttom_navbar.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/screens/email_verification%20_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/screens/mo_home_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/screens/user_home_screen.dart';
+import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/change_password_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_history_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/personal_information_screen.dart';
@@ -18,6 +21,9 @@ class AppRoute {
   static const String orderHistory = '/order-history';
   static const String forgetPassword = '/forget-password';
   static const String changePassword = '/change-password';
+  static const String homeLanding = '/guest/landing';
+  static const String detailProduk = '/detail/produk';
+  static const String detailHampers = '/detail/hampers';
 
   static Route<dynamic>? generateRoute(RouteSettings settings,
       {Object? arguments}) {
@@ -64,6 +70,21 @@ class AppRoute {
       case orderHistory:
         return PageTransition(
             child: const OrderHistoryScreen(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case homeLanding:
+        return PageTransition(
+            child: const HomeLanding(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case detailProduk:
+        return PageTransition(
+            child: const DetailProduk(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case detailHampers:
+        return PageTransition(
+            child: const DetailHampers(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
       default:
