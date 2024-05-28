@@ -18,14 +18,13 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
         height: 100.h,
         color: Colors.green,
         child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              logout();
-              Navigator.of(context).pushNamedAndRemoveUntil("/auth/login", (route) => false);
-            },
-            child: const Text("Logout")
-          )
-        ),
+            child: ElevatedButton(
+                onPressed: () {
+                  logout();
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil("/auth/login", (route) => false);
+                },
+                child: const Text("Logout"))),
       ),
     );
   }
