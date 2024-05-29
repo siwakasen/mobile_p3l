@@ -63,16 +63,30 @@ class _HomeLandingState extends State<HomeLanding> {
                   fontSize: 24,
                   fontWeight: FontWeight.w500),
             ),
-            IconButton(
-              icon: Icon(
-                Icons.person,
-                color: indigo[600],
-              ),
-              onPressed: () {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/auth/login", (route) => false);
-              },
-            ),
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.info,
+                    color: indigo[600],
+                  ),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil("/informasi-toko", (route) => false);
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.person,
+                    color: indigo[600],
+                  ),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil("/auth/login", (route) => false);
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),

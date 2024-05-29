@@ -11,6 +11,7 @@ import 'package:mobile_p3l/src/presentation/pages/profile/screens/change_passwor
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_history_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/personal_information_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:mobile_p3l/src/presentation/pages/informasi_umum/informasi_umum.dart';
 
 class AppRoute {
   static const String login = "/auth/signin";
@@ -24,13 +25,18 @@ class AppRoute {
   static const String homeLanding = '/guest/landing';
   static const String detailProduk = '/detail/produk';
   static const String detailHampers = '/detail/hampers';
-
+  static const String informasiToko = '/informasi-toko';
   static Route<dynamic>? generateRoute(RouteSettings settings,
       {Object? arguments}) {
     switch (settings.name) {
       case login:
         return PageTransition(
             child: const LoginScreen(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case informasiToko:
+        return PageTransition(
+            child: const InformasiUmum(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
       case homeUser:

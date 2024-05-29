@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_p3l/src/utils/constants.dart';
 
-class InformasiUmumPage extends StatefulWidget {
-  const InformasiUmumPage({Key? key}) : super(key: key);
+class InformasiUmum extends StatefulWidget {
+  const InformasiUmum({Key? key}) : super(key: key);
 
   @override
-  State<InformasiUmumPage> createState() => _InformasiUmumPageState();
+  State<InformasiUmum> createState() => _InformasiUmumState();
 }
 
-class _InformasiUmumPageState extends State<InformasiUmumPage> {
+class _InformasiUmumState extends State<InformasiUmum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -22,7 +23,7 @@ class _InformasiUmumPageState extends State<InformasiUmumPage> {
                 Colors.white70,
                 Colors.white70,
                 Colors.white70,
-                Color.fromARGB(255, 252, 210, 195)
+                indigo[200]!,
               ],
             ),
           ),
@@ -34,11 +35,11 @@ class _InformasiUmumPageState extends State<InformasiUmumPage> {
                   const SizedBox(height: 30),
                   Column(
                     children: <Widget>[
-                      const Text(
+                      Text(
                         "ATMA KITCHEN",
                         style: TextStyle(
                           fontSize: 28,
-                          color: Color(0xFFFF7643),
+                          color: indigo[500],
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Poppins',
                         ),
@@ -204,9 +205,9 @@ class _InformasiUmumPageState extends State<InformasiUmumPage> {
                   ),
                   const SizedBox(height: 60),
                   ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Navigator.of(context).popAndPushNamed('/guest/landing'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFF7643),
+                      backgroundColor: indigo[600],
                       textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.horizontal(
