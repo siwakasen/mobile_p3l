@@ -12,6 +12,7 @@ import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_history_
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/personal_information_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:mobile_p3l/src/presentation/pages/informasi_umum/informasi_umum.dart';
+import 'package:mobile_p3l/src/presentation/pages/profile/screens/balance_history_screen.dart';
 
 class AppRoute {
   static const String login = "/auth/signin";
@@ -26,6 +27,7 @@ class AppRoute {
   static const String detailProduk = '/detail/produk';
   static const String detailHampers = '/detail/hampers';
   static const String informasiToko = '/informasi-toko';
+  static const String historiSaldo = '/histori-saldo';
   static Route<dynamic>? generateRoute(RouteSettings settings,
       {Object? arguments}) {
     switch (settings.name) {
@@ -37,6 +39,11 @@ class AppRoute {
       case informasiToko:
         return PageTransition(
             child: const InformasiUmum(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case historiSaldo:
+        return PageTransition(
+            child: const BalanceHistoryScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
       case homeUser:
