@@ -1,12 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_p3l/src/presentation/pages/auth/screens/login_screen.dart';
 import 'package:mobile_p3l/src/utils/constants.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/buttom_navbar.dart';
 import 'package:mobile_p3l/routes/app_route.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-void main() {
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel',
+    'High Importance Notifications',
+    importance: Importance.high,
+    playSound: true);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  showFlutterNotification(message);
+}
+
+void showFlutterNotification(RemoteMessage message) {
+  RemoteNotification? notification = message.notification;
+  AndroidNotification? android = message.notification?.android;
+  if (notification != null && android != null) {
+    flutterLocalNotificationsPlugin.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channelDescription: channel.description,
+          icon: '@drawable/ic_stat_ic_notification',
+        ),
+      ),
+    );
+  }
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();   
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
   runApp(const MainApp());
 }
 
@@ -29,6 +76,9 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     getLoginData();
     super.initState();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      showFlutterNotification(message);
+    });
   }
 
   @override

@@ -7,8 +7,10 @@ import 'package:mobile_p3l/src/presentation/pages/home/screens/email_verificatio
 import 'package:mobile_p3l/src/presentation/pages/home/screens/mo_home_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/screens/user_home_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
+import 'package:mobile_p3l/src/presentation/pages/laporan/laporan_penggunaan_bb/laporan_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/change_password_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_history_screen.dart';
+import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_on_progress_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/personal_information_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:mobile_p3l/src/presentation/pages/informasi_umum/informasi_umum.dart';
@@ -20,12 +22,14 @@ class AppRoute {
   static const String homeMo = '/home/mo';
   static const String personalInformation = '/personal-information';
   static const String orderHistory = '/order-history';
+  static const String orderOnProgress = '/order-on-progress';
   static const String forgetPassword = '/forget-password';
   static const String changePassword = '/change-password';
   static const String homeLanding = '/guest/landing';
   static const String detailProduk = '/detail/produk';
   static const String detailHampers = '/detail/hampers';
   static const String informasiToko = '/informasi-toko';
+  static const String laporanPenggunaanBB = '/laporan/laporan-penggunaan-bahan-baku';
   static Route<dynamic>? generateRoute(RouteSettings settings,
       {Object? arguments}) {
     switch (settings.name) {
@@ -78,6 +82,11 @@ class AppRoute {
             child: const OrderHistoryScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
+      case orderOnProgress:
+        return PageTransition(
+            child: const OrderOnProgressScreen(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
       case homeLanding:
         return PageTransition(
             child: const HomeLanding(),
@@ -91,6 +100,11 @@ class AppRoute {
       case detailHampers:
         return PageTransition(
             child: const DetailHampers(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case laporanPenggunaanBB:
+        return PageTransition(
+            child: const LaporanPenggunaanBBScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
       default:
