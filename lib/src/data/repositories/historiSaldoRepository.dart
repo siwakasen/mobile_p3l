@@ -14,6 +14,12 @@ class HistoriSaldoRepository {
               'Authorization': 'Bearer $token',
             },
           ));
+          for (var i = 0; i < res.data['data'].length; i++) {
+            print(res.data['data'][i]['tanggal_konfirmasi']);
+            if(res.data['data'][i]['tanggal_konfirmasi']== null){
+              res.data['data'][i]['tanggal_konfirmasi'] = '';
+            }
+          }
       return (res.data['data'] as List)
           .map((e) => HistoriSaldo.fromJson(e))
           .toList();

@@ -229,7 +229,7 @@ class _BalanceHistoryScreenState extends State<BalanceHistoryScreen> {
                                                   .showSnackBar(
                                                 const SnackBar(
                                                   content: Text(
-                                                      'Nominal melebihi saldo'),
+                                                      'Saldo tidak mencukupi'),
                                                   backgroundColor: Colors.red,
                                                 ),
                                               );
@@ -424,7 +424,7 @@ class _BalanceHistoryScreenState extends State<BalanceHistoryScreen> {
                                           ),
                                           Text(
                                             historySaldo[index]
-                                                .tanggal_transaksi,
+                                                .tanggal_pengajuan,
                                             style: TextStyle(
                                               fontSize: 14.sp,
                                               fontWeight: FontWeight.w400,
@@ -434,6 +434,32 @@ class _BalanceHistoryScreenState extends State<BalanceHistoryScreen> {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 1.h),
+                                      Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Tanggal Konfirmasi",
+                                                  style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: 'Poppins',
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  historySaldo[index]
+                                                      .tanggal_konfirmasi,
+                                                  style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: 'Poppins',
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                     ],
                                   ));
                             }),
