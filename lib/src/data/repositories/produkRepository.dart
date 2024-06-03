@@ -8,7 +8,7 @@ class ProdukRepository {
   Future<List<Produk>?> getProduk() async {
     try {
       final res = await client.get(
-        '$API_URL${ENDPONT}administrator/produk',
+        '$API_URL${ENDPOINT}administrator/produk',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ class ProdukRepository {
   Future<List<Produk>>? searchProduk(query) async{
     try {
       final res = await client.get(
-        '$API_URL${ENDPONT}administrator/produk/search?query=$query',
+        '$API_URL${ENDPOINT}administrator/produk/search?query=$query',
         options: Options(
           headers: {
             'Content-Type': 'application/json',

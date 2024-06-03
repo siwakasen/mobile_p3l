@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:mobile_p3l/src/utils/constants.dart';
 
 class LoginController {
   Future login(String email, String password) async {
     try {
       final res = await client.post(
-        '$API_URL${ENDPONT}auth/login',
+        '$API_URL${ENDPOINT}auth/login',
         options: options,
         data: {
           'email': email,
@@ -21,6 +22,17 @@ class LoginController {
         return res;
       }
       if (res.data['data']['role'] == 'User') {
+        FirebaseMessaging.instance.subscribeToTopic('all');
+        var token = await FirebaseMessaging.instance.getToken();
+        await client.post(
+          '$API_URL${ENDPOINT}auth/storeNotifTokens',
+          options: options,
+          data: {
+            'token': token,
+            'id_user': res.data['data']['id'].toString(),
+          },
+        );
+
         setPreference('id', res.data['data']['id'].toString());
         setPreference('nama', res.data['data']['name']);
         setPreference('email', res.data['data']['email']);

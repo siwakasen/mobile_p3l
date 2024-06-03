@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:mobile_p3l/src/utils/constants.dart';
 import 'package:mobile_p3l/src/data/models/pesananModel.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:mobile_p3l/src/presentation/pages/profile/controllers/order_history_controller.dart';
+import 'package:mobile_p3l/src/presentation/pages/profile/controllers/order_on_progress_controller.dart';
 
-class OrderHistoryScreen extends StatefulWidget {
-  const OrderHistoryScreen({super.key});
+class OrderOnProgressScreen extends StatefulWidget {
+  const OrderOnProgressScreen({super.key});
 
   @override
-  State<OrderHistoryScreen> createState() => _OrderHistoryScreenState();
+  State<OrderOnProgressScreen> createState() => _OrderOnProgressScreenState();
 }
 
-class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
+class _OrderOnProgressScreenState extends State<OrderOnProgressScreen> {
   String? token;
-  final OrderHistoryController _orderHistoryController =
-      OrderHistoryController();
+  final OrderOnProgressController _orderHistoryController = OrderOnProgressController();
   List<Pesanan> orderHistory = [];
   String? search;
 
@@ -28,7 +27,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   }
 
   Future<List<Pesanan>> getOrderHistory() async {
-    List<Pesanan> data = await _orderHistoryController.getOrderHistory(token!);
+    List<Pesanan> data = await _orderHistoryController.getOrderOnProgress(token!);
     setState(() {
       orderHistory = data;
     });
@@ -65,7 +64,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(
-            "Histori Pesanan",
+            "Pesanan Berlangsung",
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
@@ -215,9 +214,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                         const Spacer(),
                                         Chip(
                                           label: Text(
-                                            orderHistory[index].status_transaksi == "Pesanan Sudah Selesai"
-                                                ? "Selesai"
-                                                : "Dibatalkan",
+                                            orderHistory[index].status_transaksi.toString(),
                                             style: TextStyle(
                                                 fontSize: 13.sp,
                                                 fontWeight: FontWeight.w600,
@@ -231,11 +228,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                                   BorderRadius.circular(10),
                                               side: const BorderSide(
                                                   color: Colors.transparent)),
-                                          backgroundColor: orderHistory[index]
-                                                      .status_transaksi ==
-                                                  "Pesanan Sudah Selesai"
-                                              ? indigo[500]
-                                              : red[400],
+                                          backgroundColor: indigo[500]
                                         )
                                       ],
                                     ),
@@ -270,7 +263,6 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                                                 : API_URL_IMAGE +
                                                                     e.hampers!
                                                                         .foto_hampers
-                                                            // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkjdQYqJp-qndaJRxEMg0LKKWiX67S83wBBcXFeb3CpQ&s"
                                                             ),
                                                         fit: BoxFit.cover)),
                                               ),
@@ -338,24 +330,33 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                           ],
                                         ),
                                         const Spacer(),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 5.w, vertical: 2.w),
-                                          decoration: BoxDecoration(
-                                            color: indigo[500],
-                                            shape: BoxShape.rectangle,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Text(
-                                            'Beli Lagi',
-                                            style: TextStyle(
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.w600,
-                                                fontFamily: 'Poppins',
-                                                color: Colors.white),
+                                        orderHistory[index].status_transaksi == "Pesanan Sedang Diantar Kurir" || orderHistory[index].status_transaksi == "Pesanan Sudah Di Pick Up" ?
+                                        GestureDetector(
+                                          onTap: () {
+                                            _orderHistoryController.updateOrderStatus(token!, orderHistory[index].id_pesanan!, "Pesanan Sudah Selesai");
+                                            getOrderHistory();
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 5.w, vertical: 2.w),
+                                            decoration: BoxDecoration(
+                                              color: indigo[500],
+                                              shape: BoxShape.rectangle,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: Text(
+                                              'Konfirmasi Pesanan',
+                                              style: TextStyle(
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.white),
+                                            ),
                                           ),
                                         )
+                                        :
+                                        Container()
                                       ],
                                     ),
                                   ),

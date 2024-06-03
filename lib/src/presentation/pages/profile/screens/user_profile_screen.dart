@@ -296,6 +296,51 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             ),
                             padding: EdgeInsets.all(6.sp),
                             child: Icon(
+                              FontAwesomeIcons.shoppingCart,
+                              color: Colors.indigo[500],
+                              size: 20.sp,
+                            ),
+                          ),
+                          SizedBox(width: 4.w),
+                          Text(
+                            'Order on Progress',
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17.sp,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                          size: 18.sp,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/order-on-progress", arguments: '');
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 30.sp,
+                            height: 30.sp,
+                            decoration: BoxDecoration(
+                              color: Colors.indigo[200],
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(16.sp),
+                            ),
+                            padding: EdgeInsets.all(6.sp),
+                            child: Icon(
                               FontAwesomeIcons.history,
                               color: Colors.indigo[500],
                               size: 20.sp,

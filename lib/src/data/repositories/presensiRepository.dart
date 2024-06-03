@@ -9,7 +9,7 @@ class PresensiRepository{
   Future<List<Presensi>> getPresensi(String token, String tanggal) async {
     try {
       final res = await client.get(
-        '$API_URL${ENDPONT}administrator/presensi/$tanggal',
+        '$API_URL${ENDPOINT}administrator/presensi/$tanggal',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ class PresensiRepository{
   Future<void> generatePresensi(String token, String tanggal) async {
     try {
       await client.post(
-        '$API_URL${ENDPONT}administrator/presensi',
+        '$API_URL${ENDPOINT}administrator/presensi',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ class PresensiRepository{
   Future<void> updatePresensi(String token, int id, String status) async {
     try {
       await client.put(
-        '$API_URL${ENDPONT}administrator/presensi/$id',
+        '$API_URL${ENDPOINT}administrator/presensi/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json',

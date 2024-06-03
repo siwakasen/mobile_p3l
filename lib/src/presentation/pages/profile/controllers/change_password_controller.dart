@@ -7,7 +7,7 @@ class ChangePasswordController {
   Future sendRequest(String email) async {
     try {
       final res = await client.post(
-        '$API_URL${ENDPONT}customer/reset-password/create-token',
+        '$API_URL${ENDPOINT}customer/reset-password/create-token',
         options: options,
         data: {
           'email': email,
@@ -26,7 +26,7 @@ class ChangePasswordController {
       String password, String confirm_password, String email) async {
     try {
       final res = await client.post(
-        '$API_URL${ENDPONT}customer/reset-password/submit-reset',
+        '$API_URL${ENDPOINT}customer/reset-password/submit-reset',
         options: options,
         data: {
           'email': email,

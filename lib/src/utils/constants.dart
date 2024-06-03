@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String API_URL = 'http://10.0.2.2:8000/';
-const String ENDPONT = 'api/';
+const String ENDPOINT = 'api/';
 const String API_URL_IMAGE = "http://10.0.2.2:8000/storage/";
 
 final Dio client = Dio();

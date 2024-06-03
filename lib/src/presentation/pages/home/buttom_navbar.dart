@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_p3l/src/presentation/pages/profile/screens/mo_profile_screen.dart';
 import 'package:mobile_p3l/src/utils/constants.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/screens/mo_home_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/home/screens/user_home_screen.dart';
@@ -46,7 +47,7 @@ class _DashboardState extends State<Dashboard> {
 
   List<Widget> moScreen = [
     const MOHomeScreen(),
-    const UserHomeScreen(),
+    const MOProfileScreen()
   ];
 
   List<SalomonBottomBarItem> userNavBarsItems() {
