@@ -8,7 +8,7 @@ class HampersRepository {
   Future<List<Hampers>?> getHampers() async {
     try {
       final res = await client.get(
-        '$API_URL${ENDPONT}administrator/hampers',
+        '$API_URL${ENDPOINT}administrator/hampers',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ class HampersRepository {
   Future<List<Hampers>>? searchHampers(query, date) async {
     try {
       final res = await client.get(
-        '$API_URL${ENDPONT}administrator/hampers/search?query=$query&date=$date',
+        '$API_URL${ENDPOINT}administrator/hampers/search?query=$query&date=$date',
         options: Options(
           headers: {
             'Content-Type': 'application/json',

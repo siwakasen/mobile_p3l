@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "618984761318",
+    "project_id": "atma-kitchen-221b6",
+    "storage_bucket": "atma-kitchen-221b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618984761318:android:8a88ea73dce57a6c79d827",
+        "android_client_info": {
+          "package_name": "com.atmakitchen.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhu87x8gYpfah633pGUZnGkPztPQsR5XQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

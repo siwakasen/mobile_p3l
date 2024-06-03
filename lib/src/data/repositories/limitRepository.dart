@@ -8,7 +8,7 @@ class LimitRepository {
   Future<List<LimitProdukHariIni>?> getLimit(idProduk) async {
     try {
       final res = await client.get(
-        '$API_URL${ENDPONT}administrator/limit-produk/$idProduk',
+        '$API_URL${ENDPOINT}administrator/limit-produk/$idProduk',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
