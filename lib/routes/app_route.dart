@@ -8,6 +8,7 @@ import 'package:mobile_p3l/src/presentation/pages/home/screens/mo_home_screen.da
 import 'package:mobile_p3l/src/presentation/pages/home/screens/user_home_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
 import 'package:mobile_p3l/src/presentation/pages/laporan/laporan_penggunaan_bb/laporan_screen.dart';
+import 'package:mobile_p3l/src/presentation/pages/laporan/laporan_stok_bahan_baku/laporan_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/change_password_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_history_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_on_progress_screen.dart';
@@ -29,7 +30,10 @@ class AppRoute {
   static const String detailProduk = '/detail/produk';
   static const String detailHampers = '/detail/hampers';
   static const String informasiToko = '/informasi-toko';
-  static const String laporanPenggunaanBB = '/laporan/laporan-penggunaan-bahan-baku';
+  static const String laporanPenggunaanBB =
+      '/laporan/laporan-penggunaan-bahan-baku';
+  static const String laporanStokBahanBaku = '/laporan/laporan-stok-bahan-baku';
+
   static Route<dynamic>? generateRoute(RouteSettings settings,
       {Object? arguments}) {
     switch (settings.name) {
@@ -105,6 +109,11 @@ class AppRoute {
       case laporanPenggunaanBB:
         return PageTransition(
             child: const LaporanPenggunaanBBScreen(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case laporanStokBahanBaku:
+        return PageTransition(
+            child: const LaporanStokBBScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
       default:
