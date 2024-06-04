@@ -7,7 +7,7 @@ class HistoriSaldoRepository {
 
   Future<List<HistoriSaldo>> getHistoriSaldo(String token) async {
     try {
-      final res = await client.get('$API_URL${ENDPONT}customer/penarikan-saldo',
+      final res = await client.get('$API_URL${ENDPOINT}customer/penarikan-saldo',
           options: Options(
             headers: {
               'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ class HistoriSaldoRepository {
   Future addHistoriSaldo(
       String token, int nominal) async {
     try {
-      final res = await client.post('$API_URL${ENDPONT}customer/penarikan-saldo',
+      final res = await client.post('$API_URL${ENDPOINT}customer/penarikan-saldo',
           options: Options(
             headers: {
               'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ class HistoriSaldoRepository {
 
   Future getSaldo(String token) async {
     try {
-      final res = await client.get('$API_URL${ENDPONT}customer/saldo',
+      final res = await client.get('$API_URL${ENDPOINT}customer/saldo',
           options: Options(
             headers: {
               'Content-Type': 'application/json',

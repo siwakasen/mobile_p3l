@@ -9,6 +9,7 @@ import 'package:mobile_p3l/src/presentation/pages/home/screens/user_home_screen.
 import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
 import 'package:mobile_p3l/src/presentation/pages/laporan/laporan_penggunaan_bb/laporan_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/laporan/laporan_stok_bahan_baku/laporan_screen.dart';
+import 'package:mobile_p3l/src/presentation/pages/laporan/laporan_cashflow/laporan_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/change_password_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_history_screen.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/order_on_progress_screen.dart';
@@ -16,7 +17,6 @@ import 'package:mobile_p3l/src/presentation/pages/profile/screens/personal_infor
 import 'package:page_transition/page_transition.dart';
 import 'package:mobile_p3l/src/presentation/pages/informasi_umum/informasi_umum.dart';
 import 'package:mobile_p3l/src/presentation/pages/profile/screens/balance_history_screen.dart';
-
 class AppRoute {
   static const String login = "/auth/signin";
   static const String dashboard = "/dashboard";
@@ -34,8 +34,8 @@ class AppRoute {
   static const String laporanPenggunaanBB =
       '/laporan/laporan-penggunaan-bahan-baku';
   static const String laporanStokBahanBaku = '/laporan/laporan-stok-bahan-baku';
+  static const String laporanCashflow = '/laporan/cashflow';
   static const String historiSaldo = '/histori-saldo';
-  static const String laporanPenggunaanBB = '/laporan/laporan-penggunaan-bahan-baku';
   static Route<dynamic>? generateRoute(RouteSettings settings,
       {Object? arguments}) {
     switch (settings.name) {
@@ -121,6 +121,11 @@ class AppRoute {
       case laporanStokBahanBaku:
         return PageTransition(
             child: const LaporanStokBBScreen(),
+            type: PageTransitionType.fade,
+            duration: const Duration(milliseconds: 400));
+      case laporanCashflow:
+        return PageTransition(
+            child: const LaporanCashflowScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(milliseconds: 400));
       default:

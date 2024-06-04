@@ -278,6 +278,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.1.0"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -332,10 +337,10 @@ packages:
     dependency: "direct main"
     description:
       name: intl
-      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.17.0"
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -400,6 +405,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  month_picker_dialog:
+    dependency: "direct main"
+    description:
+      name: month_picker_dialog
+      sha256: f77a42b2f738dc3e44cb0c838a9606e5a046cb7d14b549df1c5d92515bf6ec68
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.12.0"
+  month_year_picker:
+    dependency: "direct main"
+    description:
+      name: month_year_picker
+      sha256: a9af8179b6519960a4261147f20b87e0da0794e4dd9db49a079b79aedd14b7f1
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0+1"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   octo_image:
     dependency: transitive
     description:
@@ -536,6 +565,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.12.0"
+  provider:
+    dependency: transitive
+    description:
+      name: provider
+      sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.2"
   qr:
     dependency: transitive
     description:

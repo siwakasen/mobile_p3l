@@ -1,3 +1,4 @@
+import 'package:mobile_p3l/src/data/models/laporanCashflowModel.dart';
 import 'package:mobile_p3l/src/data/models/laporanPenggunaanBBModel.dart';
 import 'package:mobile_p3l/src/data/models/laporanStokBB.dart';
 import 'package:mobile_p3l/src/data/repositories/laporanRepository.dart';
@@ -13,4 +14,5 @@ class LaporanController {
   Future<List<LaporanBahanBaku>> getLaporanBahanBaku(String token) async {
     return _laporanRepository.getLaporanBahanBaku(token);
   }
+
 }
