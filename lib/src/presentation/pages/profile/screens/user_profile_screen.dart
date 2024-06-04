@@ -155,7 +155,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           SizedBox(width: 4.w),
                           Text(
-                            'Personal Information',
+                            'Informasi Akun',
                             style: TextStyle(
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w600,
@@ -201,7 +201,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           SizedBox(width: 4.w),
                           Text(
-                            'Change Password',
+                            'Ubah Password',
                             style: TextStyle(
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w600,
@@ -220,7 +220,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         onPressed: () async {
                           toast(
                               context,
-                              "Please wait, we sending email verification to your email address",
+                              "Mohon tunggu, kami mengirim email verifikasi ke email anda",
                               ToastificationType.success);
                           final res = await ChangePasswordController()
                               .sendRequest(email!);
@@ -260,7 +260,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           SizedBox(width: 4.w),
                           Text(
-                            'Add or Change Address',
+                            'Tambah / Ubah Alamat',
                             style: TextStyle(
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w600,
@@ -348,7 +348,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           SizedBox(width: 4.w),
                           Text(
-                            'Order History',
+                            'Histori Pesanan',
                             style: TextStyle(
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w600,
@@ -366,6 +366,51 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         ),
                         onPressed: () {
                           Navigator.of(context).pushNamed("/order-history", arguments: '');
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 30.sp,
+                            height: 30.sp,
+                            decoration: BoxDecoration(
+                              color: Colors.indigo[200],
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(16.sp),
+                            ),
+                            padding: EdgeInsets.all(6.sp),
+                            child: Icon(
+                              FontAwesomeIcons.coins,
+                              color: Colors.indigo[500],
+                              size: 20.sp,
+                            ),
+                          ),
+                          SizedBox(width: 4.w),
+                          Text(
+                            'Penarikan Saldo',
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17.sp,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                          size: 18.sp,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/histori-saldo", arguments: '');
                         },
                       ),
                     ],
