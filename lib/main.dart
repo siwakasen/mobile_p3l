@@ -7,6 +7,7 @@ import 'package:mobile_p3l/src/presentation/pages/landing/home_landing.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel',
@@ -42,6 +43,11 @@ void showFlutterNotification(RemoteMessage message) {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Permission.notification.isDenied.then((value) {
+      if (value) {
+        Permission.notification.request();
+      }
+    });
   await Firebase.initializeApp();   
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
