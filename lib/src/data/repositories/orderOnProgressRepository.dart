@@ -25,7 +25,7 @@ class OrderOnProgressRepository {
     }
   }
 
-  Future<void> updatePesanan(String token, int id, String status) async {
+  Future<void> updatePesanan(String token, int id) async {
     try {
       await client.put(
         '$API_URL${ENDPOINT}customer/onprogress/confirm/$id',
@@ -34,10 +34,7 @@ class OrderOnProgressRepository {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer $token',
           },
-        ),
-        data: {
-          'status_transaksi': status,
-        },
+        )
       );
     } on DioException catch (e) {
       throw e.response!;

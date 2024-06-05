@@ -8,7 +8,7 @@ class OrderOnProgressController {
     return _orderOnProgressRepository.getOrderOnProgress(token);
   }
 
-  Future<void> updateOrderStatus(String token, int id, String status) async {
-    return _orderOnProgressRepository.updatePesanan(token, id, status);
+  Future<void> updateOrderStatus(String token, int id) async {
+    return _orderOnProgressRepository.updatePesanan(token, id);
   }
 }

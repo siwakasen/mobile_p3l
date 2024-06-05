@@ -333,7 +333,7 @@ class _OrderOnProgressScreenState extends State<OrderOnProgressScreen> {
                                         orderHistory[index].status_transaksi == "Pesanan Sedang Diantar Kurir" || orderHistory[index].status_transaksi == "Pesanan Sudah Di Pick Up" ?
                                         GestureDetector(
                                           onTap: () {
-                                            _orderHistoryController.updateOrderStatus(token!, orderHistory[index].id_pesanan!, "Pesanan Sudah Selesai");
+                                            _orderHistoryController.updateOrderStatus(token!, orderHistory[index].id_pesanan!);
                                             getOrderHistory();
                                           },
                                           child: Container(
