@@ -192,6 +192,15 @@ class _LaporanPenggunaanBBScreenState extends State<LaporanPenggunaanBBScreen> {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      if (fromController.text.isEmpty || toController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Tanggal tidak boleh kosong'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                        return;
+                      }
                       LaporanController()
                           .getLaporanPenggunaanBB(token!, fromController.text, toController.text)
                           .then((value) {
