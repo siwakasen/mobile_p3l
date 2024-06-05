@@ -2,7 +2,9 @@
 import 'package:mobile_p3l/src/data/models/laporanStokBB.dart';
 import 'package:mobile_p3l/src/utils/constants.dart';
 import 'package:mobile_p3l/src/data/models/laporanPenggunaanBBModel.dart';
+import 'package:mobile_p3l/src/data/models/laporanCashflowModel.dart';
 import 'package:dio/dio.dart';
+
 
 class LaporanRepository {
   final Dio client = Dio();
@@ -45,6 +47,26 @@ class LaporanRepository {
     } on DioException catch (e) {
       throw e.response!;
     } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  Future getLaporanCashflow(String token,tahun,bulan) async {
+    try {
+      final res = await client.get(
+          '$API_URL${ENDPOINT}administrator/laporan/cashflow/$tahun/$bulan',
+          options: Options(
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $token',
+            },
+          ));
+
+      return res.data['data'];
+    } on DioException catch (e) {
+      throw e.response!;
+    } catch (e) {
+      print(e.toString());
       throw e.toString();
     }
   }

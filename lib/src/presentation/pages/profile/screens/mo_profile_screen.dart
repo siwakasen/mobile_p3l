@@ -179,6 +179,57 @@ class _MOProfileScreenState extends State<MOProfileScreen> {
               ],
             ),
           ])),
+          Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.sp),
+          margin: EdgeInsets.only(top: 2.h),
+          child: Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 30.sp,
+                      height: 30.sp,
+                      decoration: BoxDecoration(
+                        color: Colors.indigo[200],
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(16.sp),
+                      ),
+                      padding: EdgeInsets.all(6.sp),
+                      child: Icon(
+                        Icons.file_copy,
+                        color: Colors.indigo[500],
+                        size: 22.sp,
+                      ),
+                    ),
+                    SizedBox(width: 4.w),
+                    Text(
+                      'Laporan Pemasukan\ndan Pengeluaran',
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 17.sp,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                    size: 18.sp,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                        "/laporan/cashflow",
+                        arguments: '');
+                  },
+                ),
+              ],
+            ),
+          ])),
     ])));
   }
 }
